@@ -24,6 +24,7 @@ export default function Home() {
       try {
         setIsLoading(true);
         setError(null);
+
         const info = await getWebmailInfo(email);
         
         if (isMounted) {
@@ -95,7 +96,7 @@ export default function Home() {
           setIsLoading={setIsLoading}
           style={{ opacity: isLoading ? 0.5 : 1 }}
         >
-          <LoginModal email={email} />
+          <LoginModal email={email} loginURL={webmailInfo.loginURL} />
         </IFramer>
       )}
       

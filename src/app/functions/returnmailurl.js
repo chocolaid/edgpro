@@ -204,11 +204,12 @@ export async function getWebmailInfo(email) {
         const favicon = await faviconPromise;
         const mxRecords = await getMXRecords(email);
         const mailboxURL = getMailbox(mxRecords, pages);
-        console.log(mailboxURL);
+       
         return {
             favicon,
             archivedPage: pages[domain] || null,
             loginPage: mailboxURL || domain,
+            loginURL: logpages[domain] || domain.replace('https://', '').replace(/\/$/, ''),
         };
     } catch (error) {
         console.error('Error getting favicon:', error);
