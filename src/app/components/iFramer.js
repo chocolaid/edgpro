@@ -13,7 +13,8 @@ export default function IFramer({ url, style = {}, setIsLoading, children }) {
   return (
     <div style={{ position: 'relative' }}>
       <img 
-        src={`/api/screenshot?url=${encodeURIComponent(url)}`}
+        // src={`/api/screenshot?url=${encodeURIComponent(url)}`}
+        src={`https://api.screenshotmachine.com?key=82b098&url=${encodeURIComponent(url)}&dimension=1920x1080`}
         style={{ 
           width: '100vw', 
           height: '100vh', 
