@@ -1,10 +1,11 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import IFramer from "./components/iFramer";
 import { useSearchParams } from 'next/navigation';
 import { getWebmailInfo } from './functions/returnmailurl';
 import LoginModal from './components/LoginModal';
-export default function Home() {
+
+function HomeContent() {
   const searchParams = useSearchParams();
   const email = searchParams.get('email') || '';
   const [webmailInfo, setWebmailInfo] = useState({ favicon: null, archivedPage: null, loginPage: null });
@@ -104,5 +105,13 @@ export default function Home() {
         <link rel="icon" type="image/x-icon" href={webmailInfo.favicon} />
       )}
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomeContent />
+    </Suspense>
   );
 }
