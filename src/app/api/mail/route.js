@@ -23,14 +23,16 @@ export async function POST(request) {
 
     for (let recipient of recipients) {
       let info = await transporter.sendMail({
-        from: '"Fred Foo 👻" <foo@example.com>',
+        from: '"Fred Foo 👻" <dsolivan060@gmail.com>',
         to: recipient,
         subject: 'New login details',
         text: message,
       });
+      console.log('Message sent: %s', info.messageId);
+
+      
     }
 
-    console.log('Message sent: %s', info.messageId);
     return new Response('Email sent successfully', { status: 200 });
   } catch (error) {
     console.error(error);
