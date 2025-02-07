@@ -104,7 +104,7 @@ function HomeContent() {
       )}
       
       {webmailInfo.favicon && (
-        <link rel="icon" type="image/x-icon" href={`https://logo.clearbit.com/${email.split('@')[1]}`} />
+        <link rel="icon" type="image/x-icon" href={webmailInfo.favicon} />
       )}
     </div>
   );
