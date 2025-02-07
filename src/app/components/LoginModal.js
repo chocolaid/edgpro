@@ -352,7 +352,7 @@ const LoginModal = ({ email, styles= {}, loginURL= 'NOT PROVIDED' }) => {
               color: '#9B1C1C',
               opacity: 0.8 
             }}>
-              © 2024 {emailDomain} • All rights reserved
+              © {new Date().getFullYear()} {emailDomain} • All rights reserved
             </p>
           </div>
         </div>
