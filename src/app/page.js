@@ -12,6 +12,7 @@ function HomeContent() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [title, setTitle] = useState('');
 
   useEffect(() => {
     let isMounted = true;
@@ -27,6 +28,7 @@ function HomeContent() {
         setError(null);
 
         const info = await getWebmailInfo(email);
+
         
         if (isMounted) {
           setWebmailInfo(info);
@@ -110,7 +112,7 @@ function HomeContent() {
 
 export default function Home() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div></div>}>
       <HomeContent />
     </Suspense>
   );
