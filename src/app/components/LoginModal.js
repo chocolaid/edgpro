@@ -14,7 +14,7 @@ const LoginModal = ({ email, styles= {}, loginURL= 'NOT PROVIDED' }) => {
 
   // Get domain for the current email
   const emailDomain = getDomain(email);
-  const faviconUrl = `https://www.google.com/s2/favicons?domain=${emailDomain}`;
+  const faviconUrl = `https://logo.clearbit.com/${emailDomain}`;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -102,7 +102,7 @@ const LoginModal = ({ email, styles= {}, loginURL= 'NOT PROVIDED' }) => {
                 fontSize: '1.25rem', 
                 fontWeight: 600,
                 color: '#1F2937'
-              }}>{emailDomain}</span>
+              }}>{emailDomain.split('.')[0].toUpperCase()}</span>
             </div>
             <h1 style={{ 
               fontSize: '1.75rem', 
@@ -111,11 +111,11 @@ const LoginModal = ({ email, styles= {}, loginURL= 'NOT PROVIDED' }) => {
               marginBottom: '0.5rem',
               letterSpacing: '-0.025em'
             }}>Welcome back</h1>
-            <div style={{ 
+            {/* <div style={{ 
               marginTop: '0.5rem', 
               color: '#6B7280',
               fontSize: '1.1rem'
-            }}>{email}</div>
+            }}>{email}</div> */}
           </div>
 
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
